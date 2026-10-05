@@ -1,0 +1,155 @@
+/* Fuentes self-hosted (sin parpadeo de FOUT por CDN externo) */
+@import '@fontsource-variable/hanken-grotesk';
+@import '@fontsource-variable/fraunces';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ───────────────────────── Base ───────────────────────── */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  :root.dark {
+    color-scheme: dark; /* scrollbars, inputs y autofill nativos acordes al tema */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: theme('spacing.topbar');
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-50 font-sans text-base leading-relaxed text-ink-800 antialiased;
+    @apply dark:bg-ink-900 dark:text-ink-100;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-ink-900 dark:text-white;
+  }
+
+  /* Foco visible y consistente para teclado */
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-brand-500 dark:outline-brand-300;
+  }
+
+  ::selection {
+    @apply bg-brand-500 text-white;
+  }
+
+  /* Scrollbar discreto en vez de ocultarlo del todo (el original lo escondía en toda la página) */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.ink.300') transparent;
+  }
+  .dark * {
+    scrollbar-color: theme('colors.ink.600') transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ─────────── Componentes reutilizables (sistema de espaciado) ───────────
+   Todas las páginas comparten estas piezas, así los paddings, gaps y radios
+   dejan de ser valores sueltos repetidos en cada plantilla. */
+@layer components {
+  /* Contenedor de página: mismo ancho máximo y mismo padding lateral en TODAS las rutas */
+  .page {
+    @apply mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 lg:px-12 lg:py-14;
+  }
+
+  /* Superficie base (tarjetas, listas, formularios) */
+  .surface {
+    @apply rounded-2xl border border-ink-200 bg-white;
+    @apply dark:border-ink-700 dark:bg-ink-800;
+  }
+
+  /* Botones: misma altura, mismo radio, mismo gap interno */
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold;
+    @apply transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 dark:bg-brand-400 dark:text-ink-950 dark:hover:bg-brand-300;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-300 bg-transparent text-ink-800 hover:border-brand-500 hover:text-brand-600;
+    @apply dark:border-ink-600 dark:text-ink-100 dark:hover:border-brand-300 dark:hover:text-brand-300;
+  }
+
+  /* Botón-icono cuadrado (tema, menú, carrusel) */
+  .icon-btn {
+    @apply inline-flex size-11 items-center justify-center rounded-lg text-xl text-ink-700 transition-colors;
+    @apply hover:bg-ink-100 hover:text-brand-600 dark:text-ink-200 dark:hover:bg-ink-700 dark:hover:text-brand-300;
+  }
+
+  /* Enlace de texto con subrayado de marca */
+  .link {
+    @apply font-medium text-brand-600 underline decoration-brand-300 underline-offset-4 transition-colors;
+    @apply hover:decoration-brand-600 dark:text-brand-300 dark:decoration-brand-500 dark:hover:decoration-brand-300;
+  }
+
+  /* Chip de tecnología */
+  .chip {
+    @apply inline-flex items-center rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700;
+    @apply dark:bg-brand-900/60 dark:text-brand-200;
+  }
+
+  /* Logo institucional: tile claro fijo para que logos con fondo transparente se lean en ambos temas */
+  .logo-tile {
+    @apply flex h-16 w-24 shrink-0 items-center justify-center rounded-xl border border-ink-200 bg-white p-2;
+    @apply dark:border-ink-600;
+  }
+
+  /* Campos del formulario */
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink-800 dark:text-ink-100;
+  }
+  .field-input {
+    @apply block w-full rounded-lg border border-ink-300 bg-white px-4 py-3 text-base text-ink-900 placeholder:text-ink-400;
+    @apply transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30;
+    @apply dark:border-ink-600 dark:bg-ink-900 dark:text-white dark:focus:border-brand-300 dark:focus:ring-brand-300/30;
+  }
+  .field-input[aria-invalid='true'] {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/30 dark:border-red-400;
+  }
+  .field-error {
+    @apply mt-1.5 text-sm text-red-600 dark:text-red-400;
+  }
+
+  /* Enlace "saltar al contenido" (accesibilidad) */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg;
+    @apply focus:bg-brand-500 focus:px-4 focus:py-2 focus:text-white;
+  }
+
+}
+
+/* Única animación "de entrada" del sitio: fundido suave cada vez que se monta una página.
+   Los componentes enrutados se insertan justo después de <router-outlet>. */
+router-outlet + * {
+  display: block;
+  animation: route-fade 0.25s ease-out both;
+}
+
+@keyframes route-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

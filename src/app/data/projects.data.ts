@@ -1,0 +1,68 @@
+import { Project } from '../models/portfolio.models';
+
+export const PROJECTS: readonly Project[] = [
+  {
+    title: 'Personal page',
+    description: 'This portfolio: sidebar layout, light/dark theme and a working contact form.',
+    image: 'images/projects/portfolio-v2.webp',
+    imageSize: { width: 960, height: 472 },
+    stack: ['HTML', 'React', 'CSS', 'Tailwind', 'React Router'],
+    demoUrl: 'https://portafolio-v2-zeta.vercel.app/',
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/Portafolio_v2' }],
+  },
+  {
+    title: 'Kimi Decoraciones',
+    description: 'Storefront site for a decoration business.',
+    image: 'images/projects/kimi-decoraciones.webp',
+    imageSize: { width: 800, height: 454 },
+    stack: ['HTML', 'React', 'CSS', 'Bootstrap', 'React Router'],
+    demoUrl: 'https://kimi-decoraciones.vercel.app/',
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/Kimi_Decoraciones' }],
+  },
+  {
+    title: 'InventariosJS',
+    description: 'Inventory management app with an Angular client and a Spring Boot REST API.',
+    image: 'images/projects/inventariojs.webp',
+    imageSize: { width: 960, height: 451 },
+    stack: ['HTML', 'Angular', 'CSS', 'Bootstrap', 'MySQL', 'Spring Boot'],
+    repos: [
+      { label: 'Frontend', url: 'https://github.com/Santiago825/INVENTARIOJS' },
+      { label: 'Backend', url: 'https://github.com/Santiago825/INVENTARIOJS_BACKEND' },
+    ],
+  },
+  {
+    title: 'Restaurant dashboard',
+    description: 'Admin dashboard for a restaurant.',
+    image: 'images/projects/restaurant-dashboard.webp',
+    imageSize: { width: 800, height: 398 },
+    stack: ['HTML', 'React', 'Tailwind'],
+    demoUrl: 'https://dash-boar-restaurante.vercel.app/',
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/DashBoar_Restaurante' }],
+  },
+  {
+    title: 'VillaPlast product CRUD',
+    description: 'CRUD client for a product REST API.',
+    image: 'images/projects/villplast-crud.webp',
+    imageSize: { width: 960, height: 476 },
+    stack: ['HTML', 'CSS', 'JavaScript', 'React', 'Bootstrap'],
+    demoUrl: 'https://villplast-fromt-crud.vercel.app/',
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/Villplast_Fromt_Crud' }],
+  },
+  {
+    title: 'Pokédex with login',
+    description: 'Pokédex with user authentication.',
+    image: 'images/projects/pokedex-login.webp',
+    imageSize: { width: 960, height: 508 },
+    stack: ['PHP', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/Pokedex' }],
+  },
+  {
+    title: 'Personal page, version 1',
+    description: 'First iteration of my portfolio.',
+    image: 'images/projects/portfolio-v1.webp',
+    imageSize: { width: 960, height: 465 },
+    stack: ['HTML', 'JavaScript', 'CSS', 'Bootstrap'],
+    demoUrl: 'https://santiagoorjuela.netlify.app/',
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/PortafolioSO.github.io' }],
+  },
+];

@@ -1,0 +1,9 @@
+<a href="#main" class="skip-link">Skip to content</a>
+
+<app-topbar [menuOpen]="menuOpen()" (menuToggle)="toggleMenu()" />
+<app-sidebar [open]="menuOpen()" (closed)="closeMenu()" />
+
+<!-- Offsets del shell definidos como tokens (spacing.topbar / spacing.sidebar) en tailwind.config.js -->
+<main id="main" tabindex="-1" class="min-h-screen pt-topbar outline-none lg:pl-sidebar">
+  <router-outlet />
+</main>

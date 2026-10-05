@@ -1,0 +1,49 @@
+<!-- El hero ocupa exactamente la pantalla visible menos la topbar (svh = sin saltos por la barra del navegador móvil) -->
+<section
+  class="mx-auto flex min-h-[calc(100svh-theme(spacing.topbar))] w-full max-w-5xl items-center px-5 py-10 sm:px-8 lg:px-12"
+>
+  <div class="grid w-full items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+    <div>
+      <!-- Elemento memorable de la página: el saludo gigante, el mismo "HI" del diseño original -->
+      <h1
+        class="font-display text-[clamp(6rem,24vw,11rem)] font-black leading-[0.85] tracking-tighter text-ink-900 dark:text-white"
+      >
+        Hi.
+      </h1>
+      <p class="mt-8 font-display text-2xl font-semibold text-ink-900 sm:text-3xl dark:text-white">
+        I’m Santiago Orjuela, a systems engineer.
+      </p>
+      <p class="mt-2 text-lg text-ink-600 dark:text-ink-300">
+        Full-stack developer and SAP consultant.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" [href]="profile.cvUrl" target="_blank" rel="noopener noreferrer">
+          <ng-icon name="remixDownload2Line" class="text-lg" aria-hidden="true" />
+          Download CV
+        </a>
+        <a class="btn-secondary" routerLink="/contact">
+          <ng-icon name="remixMailSendLine" class="text-lg" aria-hidden="true" />
+          Contact me
+        </a>
+      </div>
+    </div>
+
+    <!--
+      Panel de marca con el retrato. `object-cover object-top` en un panel 4:5 recorta la parte baja
+      de la imagen (donde está la marca de agua de GoArt) sin tocar el archivo original.
+    -->
+    <div
+      class="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl  lg:mx-0 lg:max-w-none dark:bg-brand-700"
+    >
+      <img
+        src="images/profile/santiago.webp"
+        alt="Portrait of Santiago Orjuela"
+        width="406"
+        height="614"
+        fetchpriority="high"
+        class="absolute inset-0 size-full select-none object-cover object-top"
+      />
+    </div>
+  </div>
+</section>

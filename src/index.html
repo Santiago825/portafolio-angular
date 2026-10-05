@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Santiago Orjuela · Web Developer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of Santiago Orjuela: systems engineer and full stack developer specialised in frontend (Angular, React, Tailwind)."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f3f4f7" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <!--
+      ANTI-FLICKER: se ejecuta de forma síncrona en <head>, ANTES del primer pintado y antes de
+      que Angular arranque. Resuelve el tema (preferencia guardada → si no, el del sistema) y
+      pone la clase "dark" en <html>. Mantén la clave 'theme' en sincronía con ThemeService.
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark =
+            saved === 'dark' ||
+            (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var root = document.documentElement;
+          root.classList.toggle('dark', dark);
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute('content', dark ? '#252830' : '#f3f4f7');
+        } catch (e) {
+          /* localStorage bloqueado (modo privado estricto): queda el tema claro por defecto */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+    <noscript>This site needs JavaScript enabled to work.</noscript>
+  </body>
+</html>

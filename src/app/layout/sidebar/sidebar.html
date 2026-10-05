@@ -1,0 +1,66 @@
+<!-- Fondo oscuro detrás del cajón (solo móvil). Clic = cerrar. -->
+@if (open()) {
+  <div
+    class="fixed inset-x-0 bottom-0 top-topbar z-20 bg-ink-950/60 backdrop-blur-sm lg:hidden"
+    aria-hidden="true"
+    (click)="closed.emit()"
+  ></div>
+}
+
+<!--
+  Móvil: cajón que entra desde la izquierda; cerrado queda `invisible` para que el teclado
+  no pueda enfocar sus enlaces. Escritorio (lg): fijo y siempre visible.
+-->
+<aside
+  id="site-menu"
+  aria-label="Site"
+  class="fixed bottom-0 left-0 top-topbar z-30 flex w-sidebar flex-col gap-8 overflow-y-auto border-r border-ink-200 bg-white p-4 transition-[transform,visibility] duration-200 lg:visible lg:translate-x-0 dark:border-ink-700 dark:bg-ink-900"
+  [class]="open() ? 'translate-x-0' : '-translate-x-full max-lg:invisible'"
+>
+  <a routerLink="/" class="mx-auto mt-2 block rounded-lg" aria-label="Home" (click)="closed.emit()">
+    <!-- El logo es negro sobre transparente: `dark:invert` lo vuelve blanco en modo oscuro -->
+    <img
+      src="images/profile/logo.webp"
+      alt="JS Developer"
+      width="440"
+      height="270"
+      class="h-auto w-28 dark:invert"
+    />
+  </a>
+
+  <nav aria-label="Primary">
+    <ul class="space-y-1">
+      @for (item of nav; track item.path) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="!bg-brand-500 !text-white dark:!bg-brand-400 dark:!text-ink-950"
+            [routerLinkActiveOptions]="{ exact: !!item.exact }"
+            ariaCurrentWhenActive="page"
+            class="flex min-h-12 items-center gap-3 rounded-lg px-4 py-3 text-sm font-semibold text-ink-700 transition-colors hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800"
+            (click)="closed.emit()"
+          >
+            <ng-icon [name]="item.icon" class="text-xl" aria-hidden="true" />
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <ul class="mt-auto flex items-center justify-center gap-1 border-t border-ink-200 pt-4 dark:border-ink-700">
+    @for (social of socials; track social.url) {
+      <li>
+        <a
+          class="icon-btn size-12 text-3xl"
+          [href]="social.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="social.label + ' (opens in a new tab)'"
+        >
+          <ng-icon [name]="social.icon" />
+        </a>
+      </li>
+    }
+  </ul>
+</aside>
