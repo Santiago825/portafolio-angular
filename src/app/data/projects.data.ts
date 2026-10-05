@@ -8,7 +8,7 @@ export const PROJECTS: readonly Project[] = [
     imageSize: { width: 960, height: 472 },
     stack: ['HTML', 'React', 'CSS', 'Tailwind', 'React Router'],
     demoUrl: 'https://portafolio-angular-olive.vercel.app',
-    repos: [{ label: 'Code', url: 'https://portafolio-angular-olive.vercel.app' }],
+    repos: [{ label: 'Code', url: 'https://github.com/Santiago825/portafolio-angular' }],
   },
   {
     title: 'Kimi Decoraciones',
