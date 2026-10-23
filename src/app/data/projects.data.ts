@@ -11,6 +11,18 @@ export const PROJECTS: readonly Project[] = [
     repos: [{ label: 'Code', url: 'https://github.com/Santiago825/portafolio-angular' }],
   },
   {
+    title: 'Serviya',
+    description: 'Portal que conecta clientes con trabajadores de oficios (pintores, constructores, carpinteros, amas de casa, etc.), permitiendo a los profesionales crear su perfil y ofrecer sus servicios.',
+    image: 'images/projects/serviya.png',
+    imageSize: { width: 960, height: 472 },
+    stack: ['HTML', 'Angular', 'Tailwind', 'Spring boot', 'Java'],
+    demoUrl: 'https://serviyafrontend.santiagoorjuela812.workers.dev/inicio',
+     repos: [
+      { label: 'Frontend', url: 'https://github.com/Santiago825/ServiyaFrontend.git' },
+      { label: 'Backend', url: 'https://github.com/Santiago825/ServiyaBackend.git' },
+    ],
+  },
+  {
     title: 'Kimi Decoraciones',
     description: 'Storefront site for a decoration business.',
     image: 'images/projects/kimi-decoraciones.webp',
