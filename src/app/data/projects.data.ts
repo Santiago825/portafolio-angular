@@ -4,7 +4,7 @@ export const PROJECTS: readonly Project[] = [
   {
     title: 'Personal page',
     description: 'This portfolio: sidebar layout, light/dark theme and a working contact form.',
-    image: 'images/projects/portfolio-v2.webp',
+    image: 'images/projects/portfolio-v2.png',
     imageSize: { width: 960, height: 472 },
     stack: ['HTML', 'React', 'CSS', 'Tailwind', 'React Router'],
     demoUrl: 'https://portafolio-angular-olive.vercel.app',
